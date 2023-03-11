@@ -1,0 +1,13 @@
+<nav>
+  <button type="button" (click)="doBack()" role="link" class="btn-tg">
+    <span class="material-symbols-outlined"> arrow_back </span>
+  </button>
+</nav>
+<star-war-specie-view
+  *ngIf="data$ | async as data; else loading"
+  [data]="data"
+></star-war-specie-view>
+
+<ng-template #loading>
+  <div>Loading...</div>
+</ng-template>

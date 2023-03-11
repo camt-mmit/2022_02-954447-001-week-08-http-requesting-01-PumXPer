@@ -1,0 +1,45 @@
+<form [formGroup]="formGroup" (ngSubmit)="doSearch()" class="search">
+  <div class="warp">
+    <label>
+      <input
+        type="text"
+        formControlName="search"
+        placeholder="Search"
+        class="searchTerm"
+      />
+      <button type="submit" class="searchTerm">
+        <span class="material-symbols-outlined"> search </span>
+      </button>
+    </label>
+  </div>
+</form>
+
+<ul>
+  <li
+    *ngFor="let item of data.results"
+    (click)="select(item)"
+    (keydown.enter)="select(item)"
+    class="list"
+  >
+    {{ item.name }}
+  </li>
+</ul>
+
+<div class="btn">
+  <button
+    type="button"
+    [disabled]="!data.previous"
+    (click)="page(data.previous?.searchParams)"
+    class="btn-tg"
+  >
+    <span class="material-symbols-outlined"> arrow_back_ios </span>
+  </button>
+  <button
+    type="next"
+    [disabled]="!data.next"
+    (click)="page(data.next?.searchParams)"
+    class="btn-tg"
+  >
+    <span class="material-symbols-outlined"> arrow_forward_ios </span>
+  </button>
+</div>
